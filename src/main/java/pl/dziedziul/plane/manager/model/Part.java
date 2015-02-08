@@ -17,7 +17,6 @@ public class Part {
     private static final int ANY_QUANTITY = 1;
     @XmlAttribute(name = "name",required = true)
     private String name;
-    //@XmlElementWrapper(name = "items")
     @XmlElement(name = "item")
     Set<PartItem> partItems = new LinkedHashSet<>();
 
