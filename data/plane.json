@@ -1,0 +1,31 @@
+{
+  "name": "Plane",
+  "partItems": [
+    {
+      "part": {
+        "name": "Engine",
+        "partItems": [
+          {
+            "part": {
+              "name": "FlyWheel"
+            },
+            "quantity": 1
+          },
+          {
+            "part": {
+              "name": "Bolt"
+            },
+            "quantity": 100
+          },
+          {
+            "part": {
+              "name": "Air Intake"
+            },
+            "quantity": 2
+          }
+        ]
+      },
+      "quantity": 2
+    }
+  ]
+}
