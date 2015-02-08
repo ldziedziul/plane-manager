@@ -3,6 +3,8 @@ package pl.dziedziul.plane.manager.model;
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -13,11 +15,20 @@ import java.util.Set;
  */
 public class Part {
     private static final int ANY_QUANTITY = 1;
+    @XmlAttribute(name = "name",required = true)
     private String name;
+    //@XmlElementWrapper(name = "items")
+    @XmlElement(name = "item")
     Set<PartItem> partItems = new LinkedHashSet<>();
 
     public Part(String name) {
         this.name = name;
+    }
+
+    /**
+     * for jaxb
+     */
+    private Part() {
     }
 
     public void addPart(Part part, int quantity) {

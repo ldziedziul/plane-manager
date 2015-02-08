@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<plane name="Plane">
+    <item>
+        <part name="Engine">
+            <item>
+                <part name="FlyWheel"/>
+                <quantity>1</quantity>
+            </item>
+            <item>
+                <part name="Bolt"/>
+                <quantity>100</quantity>
+            </item>
+            <item>
+                <part name="Air Intake"/>
+                <item>
+                    <part name="Bolt"/>
+                    <quantity>10</quantity>
+                </item>
+                <quantity>2</quantity>
+            </item>
+        </part>
+        <quantity>2</quantity>
+    </item>
+</plane>

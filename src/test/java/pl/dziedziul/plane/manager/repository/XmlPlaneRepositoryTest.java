@@ -9,14 +9,16 @@ import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PlaneRepositoryTest {
+public class XmlPlaneRepositoryTest {
 
-    private static String VALID_PLANE_FILENAME = "src/test/resources/data/valid-test-plane.json";
+    final PlaneTestHelper planeTestHelper = new PlaneTestHelper();
+
+    private static String VALID_PLANE_FILENAME = "src/test/resources/data/valid-test-plane.xml";
 
     @Test
     public void shouldWorkRead() throws Exception {
         //given
-        PlaneRepository sut = new PlaneRepository();
+        XmlPlaneRepository sut = new XmlPlaneRepository();
         //when
         Plane plane = sut.read(VALID_PLANE_FILENAME);
         //then
@@ -31,16 +33,15 @@ public class PlaneRepositoryTest {
         PartItem airIntakeItem = engine.getPartItems().get(1);
         assertThat(airIntakeItem.getPart().getName()).isEqualTo("Air Intake");
         assertThat(airIntakeItem.getQuantity()).isEqualTo(2);
-
     }
 
     @Test
     public void shouldWritePlaneToFile() throws Exception {
         //given
-        PlaneRepository sut = new PlaneRepository();
-        Plane plane = createSamplePlane();
+        XmlPlaneRepository sut = new XmlPlaneRepository();
+        Plane plane = planeTestHelper.createSamplePlane();
         //when
-        String filename = "target/test-plane.json";
+        String filename = "target/test-plane.xml";
         sut.write(plane, filename);
         //then
         //shoud not throw exception and:
@@ -55,21 +56,11 @@ public class PlaneRepositoryTest {
     @Test(expected = RepositoryException.class)
     public void shouldFailReadingInvalidPlaneFromFile() throws Exception {
         //given
-        PlaneRepository sut = new PlaneRepository();
+        XmlPlaneRepository sut = new XmlPlaneRepository();
         //when
-        String filename = "src/test/resources/data/invalid-test-plane.json";
+        String filename = "src/test/resources/data/invalid-test-plane.xml";
         sut.read(filename);
         //then
         //shoud throw exception
-    }
-
-    private Plane createSamplePlane() {
-        Plane plane = new Plane();
-        Part engine = new Part("Engine");
-        engine.addPart(new Part("FlyWheel"), 1);
-        engine.addPart(new Part("Bolt"), 100);
-        engine.addPart(new Part("Air Intake"), 2);
-        plane.addPart(engine, 1);
-        return plane;
     }
 }

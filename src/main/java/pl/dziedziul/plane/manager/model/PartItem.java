@@ -1,11 +1,18 @@
 package pl.dziedziul.plane.manager.model;
 
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * Created on 2015-02-08.
  */
 public class PartItem{
+    @XmlElement
     private Part part;
+    @XmlElement
     private int quantity;
+
+    private PartItem() {
+    }
 
     public PartItem(Part part, int quantity) {
         this.part = part;

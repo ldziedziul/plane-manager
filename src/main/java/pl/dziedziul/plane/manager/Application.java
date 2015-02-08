@@ -6,17 +6,18 @@ import pl.dziedziul.plane.manager.model.PartNotFoundException;
 import pl.dziedziul.plane.manager.model.Plane;
 import pl.dziedziul.plane.manager.repository.PlaneRepository;
 import pl.dziedziul.plane.manager.repository.RepositoryException;
+import pl.dziedziul.plane.manager.repository.XmlPlaneRepository;
 
 /**
  * Created on 2015-02-08.
  */
 public class Application {
     static private final Logger LOG = Logger.getLogger(Application.class);
-    static private final String FILENAME = "data/plane.json";
+    static private final String FILENAME = "data/plane.xml";// or "data/plane.json"
 
-    private PlaneRepository planeRepository = new PlaneRepository();
-    PlaneRenderer planeRenderer = new PlaneRenderer();
-    PartReporter partReporter = new PartReporter();
+    private PlaneRepository planeRepository = new XmlPlaneRepository(); //or new JsonPlaneRepository();
+    private PlaneRenderer planeRenderer = new PlaneRenderer();
+    private PartReporter partReporter = new PartReporter();
 
     public void start() {
         try {
@@ -32,7 +33,7 @@ public class Application {
             display(plane);
 
             LOG.info("Removing engine from plane");
-        //    plane.removePart(new Part("Engine"));
+            plane.removePart(new Part("Engine"));
             LOG.info("Displaying plane after removing engine");
             display(plane);
 
