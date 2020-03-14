@@ -1,18 +1,20 @@
 package pl.dziedziul.plane.manager;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.dziedziul.plane.manager.model.Part;
 import pl.dziedziul.plane.manager.model.PartNotFoundException;
 import pl.dziedziul.plane.manager.model.Plane;
 import pl.dziedziul.plane.manager.repository.PlaneRepository;
 import pl.dziedziul.plane.manager.repository.RepositoryException;
 
+
 /**
  * Created on 2015-02-08.
  */
 public class Application {
-    static private final Logger LOG = Logger.getLogger(Application.class);
-    static private final String FILENAME = "data/plane.json";
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
+    private static final String FILENAME = "data/plane.json";
 
     private PlaneRepository planeRepository = new PlaneRepository();
     PlaneRenderer planeRenderer = new PlaneRenderer();
